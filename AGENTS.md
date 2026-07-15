@@ -26,6 +26,7 @@ This repository is the data/analytics-engineering project in a three-repository 
 
 - GitHub: `https://github.com/momo9113-coder/commercelens-analytics-warehouse`
 - Live report: `https://momo9113-coder.github.io/commercelens-analytics-warehouse/`
+- Stable release: `https://github.com/momo9113-coder/commercelens-analytics-warehouse/releases/tag/v1.0.0`
 - Default branch: `main`
 - Dataset: public Olist Brazilian E-Commerce snapshot, licensed `CC-BY-NC-SA-4.0` on Kaggle.
 - Full build: 99,441 order facts after all 9 data-quality checks passed; 96,476 are eligible for late-delivery analysis.
@@ -88,4 +89,4 @@ If `.venv` does not exist, create it and install `requirements-data.txt`. Python
 2. Keep the dated snapshot manifest synchronized after any raw-data replacement.
 3. Re-verify the pinned environment when upgrading Python or direct dependencies.
 4. Keep the README screenshot synchronized after material report changes.
-5. Tag an application-ready release after conclusions and reproducibility evidence are stable.
+5. Keep `v1.0.0` stable; create a new release only after a material, re-verified change.
