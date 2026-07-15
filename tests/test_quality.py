@@ -15,5 +15,5 @@ def test_fixture_warehouse_passes_quality_checks(tmp_path: Path) -> None:
         results = run_quality_checks(connection)
     finally:
         connection.close()
-    assert len(results) == 8
+    assert len(results) == 9
     assert all(result.passed for result in results), results

@@ -1,1 +1,5 @@
--e .[dev]
+# Direct production pins verified on 2026-07-15.
+-e .
+duckdb==1.5.4
+matplotlib==3.11.0
+pandas==3.0.3

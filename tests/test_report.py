@@ -14,5 +14,8 @@ def test_report_contains_metrics_and_charts(tmp_path: Path) -> None:
     index = generate_report(db_path, output_dir)
     html = index.read_text(encoding="utf-8")
     assert "CommerceLens Analytics Report" in html
+    assert "Operational findings" in html
+    assert "Orders eligible for late-delivery rate" in html
     assert (output_dir / "monthly_reliability.png").exists()
     assert (output_dir / "review_by_delivery.png").exists()
+    assert (output_dir / "state_reliability.png").exists()

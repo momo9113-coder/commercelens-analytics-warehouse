@@ -1,93 +1,156 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CommerceLens Analytics Report</title>
-<style>body{font-family:system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#17202a}h1{margin-bottom:.2rem}.muted{color:#5f6b76}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}img{width:100%;height:auto;border:1px solid #d8dee4}table{border-collapse:collapse;width:100%;margin:1rem 0}th,td{border-bottom:1px solid #d8dee4;padding:.45rem;text-align:left}th{background:#f6f8fa}.data{font-size:.9rem}.table-wrap{overflow-x:auto}</style></head>
-<body><h1>CommerceLens Analytics Report</h1><p class="muted">Source: <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">Olist Brazilian E-Commerce Public Dataset</a> (Kaggle, CC-BY-NC-SA-4.0). Purchase coverage: 2016-09-04 to 2018-10-17. Generated: 2026-07-15 01:29 UTC.</p><p class="muted">These are descriptive associations, not causal claims.</p>
-<h2>Key metrics</h2><table><tr><th>Orders</th><td>99,441</td></tr><tr><th>Gross Item Freight Value</th><td>15,843,553.24</td></tr><tr><th>Late Delivery Rate</th><td>7.9%</td></tr><tr><th>Average Review Score</th><td>4.087</td></tr><tr><th>Average Delivery Days</th><td>12.497</td></tr></table>
-<div class="grid"><figure><img src="monthly_reliability.png" alt="Monthly delivery reliability"><figcaption>Monthly late-delivery rate.</figcaption></figure>
-<figure><img src="review_by_delivery.png" alt="Review score by delivery status"><figcaption>Average review score by delivery status.</figcaption></figure></div>
-<h2>Largest sellers by order count</h2><div class="table-wrap"><table class="dataframe data">
+<style>body{font-family:system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#17202a;line-height:1.5}h1{margin-bottom:.2rem}h2{margin-top:2.2rem;border-bottom:1px solid #d8dee4;padding-bottom:.35rem}.muted{color:#5f6b76}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}figure{margin:0}img{width:100%;height:auto;border:1px solid #d8dee4}table{border-collapse:collapse;width:100%;margin:1rem 0}th,td{border-bottom:1px solid #d8dee4;padding:.5rem;text-align:left}th{background:#f6f8fa}.data{font-size:.9rem}.table-wrap{overflow-x:auto}li{margin:.55rem 0}code{overflow-wrap:anywhere}</style></head>
+<body><h1>CommerceLens Analytics Report</h1><p class="muted">Source: <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">Olist Brazilian E-Commerce Public Dataset</a> (Kaggle, CC-BY-NC-SA-4.0). Purchase coverage: 2016-09-04 to 2018-10-17. Generated: 2026-07-15 10:59 UTC.</p><p class="muted">These are descriptive associations from a historical snapshot, not causal or realized-revenue claims.</p>
+<h2>Key metrics</h2><table><tr><th>Orders in warehouse</th><td>99,441</td></tr><tr><th>Orders eligible for late-delivery rate</th><td>96,476</td></tr><tr><th>Gross item + freight value</th><td>15,843,553.24</td></tr><tr><th>Late-delivery rate (eligible orders)</th><td>8.1%</td></tr><tr><th>Average review score</th><td>4.087</td></tr><tr><th>Average delivery days</th><td>12.497</td></tr></table>
+<h2>Operational findings</h2><ul>
+<li><strong>Delivery and reviews:</strong> among reviewed eligible orders, late deliveries averaged 2.567 stars versus 4.294 on time, a 1.728-point gap. The 1-2 star review rate was 44.8 percentage points higher in the late group.</li>
+<li><strong>Monthly reliability:</strong> March 2018 had the highest late-delivery rate among months with at least 1,000 eligible orders: 21.4% across 7,003 orders.</li>
+<li><strong>Geography:</strong> Among states with at least 1,000 eligible orders, CE had a 15.3% late rate versus 5.0% in PR, a descriptive gap of 10.3%.</li>
+<li><strong>Seller dispersion:</strong> Across 210 sellers with at least 100 eligible orders, the median late rate was 6.7%, the 90th percentile was 12.8%, and the seller-level late-rate/review correlation was -0.466.</li>
+</ul>
+<div class="grid"><figure><img src="monthly_reliability.png" alt="Monthly delivery reliability"><figcaption>Monthly late-delivery rate with a minimum-volume filter.</figcaption></figure>
+<figure><img src="review_by_delivery.png" alt="Review score by delivery status"><figcaption>Average review score by delivery status.</figcaption></figure>
+<figure><img src="state_reliability.png" alt="State late-delivery rates"><figcaption>State reliability with a minimum-volume filter.</figcaption></figure></div>
+<h2>High-volume state comparison</h2><p>States shown have at least 1,000 eligible orders; the table is ordered by order volume.</p><div class="table-wrap"><table class="dataframe data">
   <thead>
     <tr style="text-align: right;">
-      <th>Seller ID</th>
-      <th>Order count</th>
-      <th>Allocated item + freight value</th>
+      <th>State</th>
+      <th>Eligible orders</th>
       <th>Late-delivery rate</th>
-      <th>Average review score</th>
+      <th>Average review</th>
+      <th>Average delivery days</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>6560211a19b47992c3666cc44a7e94c0</td>
-      <td>1,854</td>
-      <td>151,511.95</td>
-      <td>6.3%</td>
-      <td>3.936</td>
+      <td>SP</td>
+      <td>40,495</td>
+      <td>5.9%</td>
+      <td>4.247</td>
+      <td>8.70</td>
     </tr>
     <tr>
-      <td>4a3ca9315b744ce9f8e9374361493884</td>
-      <td>1,806</td>
-      <td>236,144.78</td>
+      <td>RJ</td>
+      <td>12,353</td>
+      <td>13.5%</td>
+      <td>3.964</td>
+      <td>15.24</td>
+    </tr>
+    <tr>
+      <td>MG</td>
+      <td>11,355</td>
+      <td>5.6%</td>
+      <td>4.192</td>
+      <td>11.95</td>
+    </tr>
+    <tr>
+      <td>RS</td>
+      <td>5,344</td>
+      <td>7.1%</td>
+      <td>4.186</td>
+      <td>15.25</td>
+    </tr>
+    <tr>
+      <td>PR</td>
+      <td>4,923</td>
+      <td>5.0%</td>
+      <td>4.240</td>
+      <td>11.94</td>
+    </tr>
+    <tr>
+      <td>SC</td>
+      <td>3,547</td>
+      <td>9.8%</td>
+      <td>4.132</td>
+      <td>14.91</td>
+    </tr>
+    <tr>
+      <td>BA</td>
+      <td>3,256</td>
+      <td>14.0%</td>
+      <td>3.930</td>
+      <td>19.28</td>
+    </tr>
+    <tr>
+      <td>DF</td>
+      <td>2,080</td>
+      <td>7.1%</td>
+      <td>4.134</td>
+      <td>12.90</td>
+    </tr>
+    <tr>
+      <td>ES</td>
+      <td>1,995</td>
+      <td>12.2%</td>
+      <td>4.080</td>
+      <td>15.72</td>
+    </tr>
+    <tr>
+      <td>GO</td>
+      <td>1,957</td>
+      <td>8.2%</td>
+      <td>4.104</td>
+      <td>15.54</td>
+    </tr>
+    <tr>
+      <td>PE</td>
+      <td>1,593</td>
       <td>10.8%</td>
-      <td>3.828</td>
+      <td>4.083</td>
+      <td>18.40</td>
     </tr>
     <tr>
-      <td>cc419e0650a3c5ba77189a1882b7556a</td>
-      <td>1,706</td>
-      <td>130,575.04</td>
-      <td>5.9%</td>
-      <td>4.074</td>
-    </tr>
-    <tr>
-      <td>1f50f920176fa81dab994f9023523100</td>
-      <td>1,404</td>
-      <td>142,738.39</td>
-      <td>10.5%</td>
-      <td>4.133</td>
-    </tr>
-    <tr>
-      <td>da8622b14eb17ae2831f4ac5b9dab84a</td>
-      <td>1,314</td>
-      <td>184,351.79</td>
-      <td>7.6%</td>
-      <td>4.174</td>
-    </tr>
-    <tr>
-      <td>955fee9216a65b617aa5c0531780ce60</td>
-      <td>1,287</td>
-      <td>160,890.07</td>
-      <td>7.6%</td>
-      <td>4.157</td>
-    </tr>
-    <tr>
-      <td>7a67c85e85bb2ce8582c35f2203ad736</td>
-      <td>1,160</td>
-      <td>162,779.09</td>
-      <td>5.9%</td>
-      <td>4.244</td>
-    </tr>
-    <tr>
-      <td>ea8482cd71df3c1969d7b9473ff13abc</td>
-      <td>1,146</td>
-      <td>54,812.57</td>
-      <td>10.3%</td>
-      <td>3.996</td>
-    </tr>
-    <tr>
-      <td>4869f7a5dfa277a7dca6462dcf3b52b2</td>
-      <td>1,132</td>
-      <td>250,063.45</td>
-      <td>11.5%</td>
-      <td>4.133</td>
-    </tr>
-    <tr>
-      <td>3d871de0142ce09b7081e2b9d1733cb1</td>
-      <td>1,080</td>
-      <td>117,554.99</td>
-      <td>5.8%</td>
-      <td>4.152</td>
+      <td>CE</td>
+      <td>1,279</td>
+      <td>15.3%</td>
+      <td>3.942</td>
+      <td>21.20</td>
     </tr>
   </tbody>
 </table></div>
-<h2>Reproduce</h2><p><code>python -m commercelens.cli report --data-dir data/fixtures --db-path reports/fixture.duckdb --output-dir site</code></p>
+<h2>Seller reliability watchlist</h2><p>Highest late-delivery rates among sellers with at least 100 eligible orders. Truncated IDs remain dataset identifiers, not business names.</p><div class="table-wrap"><table class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Seller ID</th>
+      <th>Eligible orders</th>
+      <th>Late-delivery rate</th>
+      <th>Average review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>06a2c3af...</td>
+      <td>389</td>
+      <td>23.1%</td>
+      <td>4.013</td>
+    </tr>
+    <tr>
+      <td>1ca7077d...</td>
+      <td>108</td>
+      <td>22.2%</td>
+      <td>2.393</td>
+    </tr>
+    <tr>
+      <td>88460e8e...</td>
+      <td>246</td>
+      <td>19.5%</td>
+      <td>3.443</td>
+    </tr>
+    <tr>
+      <td>e5a34388...</td>
+      <td>216</td>
+      <td>18.5%</td>
+      <td>3.995</td>
+    </tr>
+    <tr>
+      <td>cd68562d...</td>
+      <td>122</td>
+      <td>18.0%</td>
+      <td>4.017</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>Method and reproduction</h2><p>The late-delivery denominator includes only orders with both actual and estimated delivery timestamps. SQL definitions are versioned in <a href="https://github.com/momo9113-coder/commercelens-analytics-warehouse/blob/main/sql/analysis/analysis.sql">analysis.sql</a>; interpretation and limitations are documented in <a href="https://github.com/momo9113-coder/commercelens-analytics-warehouse/blob/main/docs/ANALYSIS.md">docs/ANALYSIS.md</a>.</p><p><code>python -m commercelens.cli report --data-dir data/raw --db-path reports/commercelens.duckdb --output-dir site</code></p>
 </body></html>

@@ -32,8 +32,11 @@ SELECT
     CASE
         WHEN o.order_delivered_customer_date IS NOT NULL
          AND o.order_estimated_delivery_date IS NOT NULL
-         AND o.order_delivered_customer_date > o.order_estimated_delivery_date
-        THEN 1 ELSE 0
+        THEN CASE
+            WHEN o.order_delivered_customer_date > o.order_estimated_delivery_date THEN 1
+            ELSE 0
+        END
+        ELSE NULL
     END AS late_delivery,
     CASE
         WHEN o.order_purchase_timestamp IS NOT NULL

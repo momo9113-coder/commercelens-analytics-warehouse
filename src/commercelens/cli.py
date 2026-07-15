@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from .lineage import build_snapshot_manifest, write_snapshot_manifest
 from .quality import assert_quality, run_quality_checks, write_quality_report
 from .report import generate_report
 from .warehouse import build_warehouse, connect
@@ -17,11 +18,18 @@ def build_parser() -> argparse.ArgumentParser:
         command.add_argument("--db-path", type=Path, default=Path("reports/commercelens.duckdb"))
     subparsers.choices["quality"].add_argument("--output", type=Path, default=Path("reports/quality.json"))
     subparsers.choices["report"].add_argument("--output-dir", type=Path, default=Path("site"))
+    snapshot = subparsers.add_parser("snapshot")
+    snapshot.add_argument("--data-dir", type=Path, required=True)
+    snapshot.add_argument("--output", type=Path, default=Path("data/snapshot_manifest.json"))
     return parser
 
 
 def main() -> None:
     args = build_parser().parse_args()
+    if args.command == "snapshot":
+        output = write_snapshot_manifest(build_snapshot_manifest(args.data_dir), args.output)
+        print(output)
+        return
     if args.command == "build":
         build_warehouse(args.data_dir, args.db_path)
         print(args.db_path)

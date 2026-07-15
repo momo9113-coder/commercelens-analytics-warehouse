@@ -27,6 +27,7 @@ The CI fixture has a different purpose: it proves the pipeline executes without 
 Safe full-report update sequence:
 
 ```powershell
+.\.venv\Scripts\python.exe -m commercelens.cli snapshot --data-dir data/raw --output data/snapshot_manifest.json
 .\.venv\Scripts\python.exe -m commercelens.cli quality --data-dir data/raw --db-path reports/commercelens.duckdb --output reports/quality.json
 .\.venv\Scripts\python.exe -m commercelens.cli report --data-dir data/raw --db-path reports/commercelens.duckdb --output-dir site
 .\.venv\Scripts\python.exe -m pytest -q

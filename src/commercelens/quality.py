@@ -56,6 +56,17 @@ CHECKS: tuple[tuple[str, str, str], ...] = (
         "SELECT COUNT(*) FROM stg_reviews WHERE review_score IS NOT NULL AND (review_score < 1 OR review_score > 5)",
         "review scores must be between one and five",
     ),
+    (
+        "invalid_late_delivery_eligibility",
+        """SELECT COUNT(*) FROM fct_orders
+        WHERE (order_delivered_customer_date IS NOT NULL
+               AND order_estimated_delivery_date IS NOT NULL
+               AND late_delivery IS NULL)
+           OR ((order_delivered_customer_date IS NULL
+                OR order_estimated_delivery_date IS NULL)
+               AND late_delivery IS NOT NULL)""",
+        "late-delivery flags require both actual and estimated delivery timestamps",
+    ),
 )
 
 
