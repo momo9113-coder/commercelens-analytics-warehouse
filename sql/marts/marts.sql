@@ -53,7 +53,7 @@ WITH order_sellers AS (
 SELECT
     os.seller_id,
     COUNT(*) AS order_count,
-    SUM(f.order_value / NULLIF(f.seller_count, 0)) AS allocated_gmv,
+    SUM(f.order_value / NULLIF(f.seller_count, 0)) AS allocated_gross_item_freight_value,
     AVG(f.late_delivery) AS late_delivery_rate,
     AVG(f.avg_review_score) AS average_review_score
 FROM order_sellers os

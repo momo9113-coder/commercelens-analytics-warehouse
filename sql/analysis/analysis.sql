@@ -1,7 +1,7 @@
 -- KPI summary
 SELECT
     COUNT(*) AS orders,
-    SUM(order_value) AS gmv,
+    SUM(order_value) AS gross_item_freight_value,
     AVG(late_delivery) AS late_delivery_rate,
     AVG(avg_review_score) AS average_review_score,
     AVG(delivery_days) AS average_delivery_days
@@ -11,7 +11,7 @@ FROM fct_orders;
 SELECT
     DATE_TRUNC('month', order_purchase_timestamp) AS month,
     COUNT(*) AS orders,
-    SUM(order_value) AS gmv,
+    SUM(order_value) AS gross_item_freight_value,
     AVG(late_delivery) AS late_delivery_rate,
     AVG(avg_review_score) AS average_review_score
 FROM fct_orders

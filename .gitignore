@@ -8,5 +8,4 @@ data/raw/*
 reports/*.duckdb
 reports/*.json
 reports/*.csv
-site/*.png
 .DS_Store

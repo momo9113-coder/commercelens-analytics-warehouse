@@ -34,7 +34,7 @@ def _load_raw_tables(connection: duckdb.DuckDBPyConnection, data_dir: Path) -> N
     for table_name, path in required_files(data_dir).items():
         connection.execute(
             f"CREATE OR REPLACE TABLE raw_{table_name} AS "
-            f"SELECT * FROM read_csv_auto('{_quoted_path(path)}', header=true, null_padding=true)"
+            f"SELECT * FROM read_csv_auto('{_quoted_path(path)}', header=true, null_padding=true, parallel=false)"
         )
 
 

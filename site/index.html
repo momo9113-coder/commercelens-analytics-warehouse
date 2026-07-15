@@ -1,44 +1,93 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CommerceLens Analytics Report</title>
-<style>body{font-family:system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#17202a}h1{margin-bottom:.2rem}.muted{color:#5f6b76}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}img{width:100%;height:auto;border:1px solid #d8dee4}table{border-collapse:collapse;width:100%;margin:1rem 0}th,td{border-bottom:1px solid #d8dee4;padding:.45rem;text-align:left}th{background:#f6f8fa}.data{font-size:.9rem}</style></head>
-<body><h1>CommerceLens Analytics Report</h1><p class="muted">Generated from the configured Olist snapshot. These are descriptive associations, not causal claims.</p>
-<h2>Key metrics</h2><table><tr><th>Orders</th><td>4.000</td></tr><tr><th>Gmv</th><td>328.000</td></tr><tr><th>Late Delivery Rate</th><td>0.250</td></tr><tr><th>Average Review Score</th><td>3.333</td></tr><tr><th>Average Delivery Days</th><td>3.500</td></tr></table>
+<style>body{font-family:system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#17202a}h1{margin-bottom:.2rem}.muted{color:#5f6b76}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}img{width:100%;height:auto;border:1px solid #d8dee4}table{border-collapse:collapse;width:100%;margin:1rem 0}th,td{border-bottom:1px solid #d8dee4;padding:.45rem;text-align:left}th{background:#f6f8fa}.data{font-size:.9rem}.table-wrap{overflow-x:auto}</style></head>
+<body><h1>CommerceLens Analytics Report</h1><p class="muted">Source: <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">Olist Brazilian E-Commerce Public Dataset</a> (Kaggle, CC-BY-NC-SA-4.0). Purchase coverage: 2016-09-04 to 2018-10-17. Generated: 2026-07-15 01:29 UTC.</p><p class="muted">These are descriptive associations, not causal claims.</p>
+<h2>Key metrics</h2><table><tr><th>Orders</th><td>99,441</td></tr><tr><th>Gross Item Freight Value</th><td>15,843,553.24</td></tr><tr><th>Late Delivery Rate</th><td>7.9%</td></tr><tr><th>Average Review Score</th><td>4.087</td></tr><tr><th>Average Delivery Days</th><td>12.497</td></tr></table>
 <div class="grid"><figure><img src="monthly_reliability.png" alt="Monthly delivery reliability"><figcaption>Monthly late-delivery rate.</figcaption></figure>
 <figure><img src="review_by_delivery.png" alt="Review score by delivery status"><figcaption>Average review score by delivery status.</figcaption></figure></div>
-<h2>Largest sellers by order count</h2><table class="dataframe data">
+<h2>Largest sellers by order count</h2><div class="table-wrap"><table class="dataframe data">
   <thead>
     <tr style="text-align: right;">
-      <th>seller_id</th>
-      <th>order_count</th>
-      <th>allocated_gmv</th>
-      <th>late_delivery_rate</th>
-      <th>average_review_score</th>
+      <th>Seller ID</th>
+      <th>Order count</th>
+      <th>Allocated item + freight value</th>
+      <th>Late-delivery rate</th>
+      <th>Average review score</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>s1</td>
-      <td>2</td>
-      <td>170.500</td>
-      <td>0.500</td>
-      <td>3.500</td>
+      <td>6560211a19b47992c3666cc44a7e94c0</td>
+      <td>1,854</td>
+      <td>151,511.95</td>
+      <td>6.3%</td>
+      <td>3.936</td>
     </tr>
     <tr>
-      <td>s2</td>
-      <td>2</td>
-      <td>111.500</td>
-      <td>0.500</td>
-      <td>2.000</td>
+      <td>4a3ca9315b744ce9f8e9374361493884</td>
+      <td>1,806</td>
+      <td>236,144.78</td>
+      <td>10.8%</td>
+      <td>3.828</td>
     </tr>
     <tr>
-      <td>s3</td>
-      <td>1</td>
-      <td>46.000</td>
-      <td>0.000</td>
-      <td>3.000</td>
+      <td>cc419e0650a3c5ba77189a1882b7556a</td>
+      <td>1,706</td>
+      <td>130,575.04</td>
+      <td>5.9%</td>
+      <td>4.074</td>
+    </tr>
+    <tr>
+      <td>1f50f920176fa81dab994f9023523100</td>
+      <td>1,404</td>
+      <td>142,738.39</td>
+      <td>10.5%</td>
+      <td>4.133</td>
+    </tr>
+    <tr>
+      <td>da8622b14eb17ae2831f4ac5b9dab84a</td>
+      <td>1,314</td>
+      <td>184,351.79</td>
+      <td>7.6%</td>
+      <td>4.174</td>
+    </tr>
+    <tr>
+      <td>955fee9216a65b617aa5c0531780ce60</td>
+      <td>1,287</td>
+      <td>160,890.07</td>
+      <td>7.6%</td>
+      <td>4.157</td>
+    </tr>
+    <tr>
+      <td>7a67c85e85bb2ce8582c35f2203ad736</td>
+      <td>1,160</td>
+      <td>162,779.09</td>
+      <td>5.9%</td>
+      <td>4.244</td>
+    </tr>
+    <tr>
+      <td>ea8482cd71df3c1969d7b9473ff13abc</td>
+      <td>1,146</td>
+      <td>54,812.57</td>
+      <td>10.3%</td>
+      <td>3.996</td>
+    </tr>
+    <tr>
+      <td>4869f7a5dfa277a7dca6462dcf3b52b2</td>
+      <td>1,132</td>
+      <td>250,063.45</td>
+      <td>11.5%</td>
+      <td>4.133</td>
+    </tr>
+    <tr>
+      <td>3d871de0142ce09b7081e2b9d1733cb1</td>
+      <td>1,080</td>
+      <td>117,554.99</td>
+      <td>5.8%</td>
+      <td>4.152</td>
     </tr>
   </tbody>
-</table>
+</table></div>
 <h2>Reproduce</h2><p><code>python -m commercelens.cli report --data-dir data/fixtures --db-path reports/fixture.duckdb --output-dir site</code></p>
 </body></html>
