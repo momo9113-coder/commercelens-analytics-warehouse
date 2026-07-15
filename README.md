@@ -6,11 +6,9 @@ The project demonstrates ingestion, relational staging, DuckDB marts, SQL qualit
 
 ## Public report
 
-The intended public URL is:
+[View the live analytics report](https://momo9113-coder.github.io/commercelens-analytics-warehouse/).
 
-`https://momo9113-coder.github.io/commercelens-analytics-warehouse/`
-
-The page will be activated after the public repository and Pages workflow are created. It publishes pre-generated HTML and charts from a dated full local snapshot; raw data and the DuckDB file are never committed. CI uses the small fixture only to verify that the pipeline still runs.
+The page publishes pre-generated HTML and charts from a dated full local snapshot; raw data and the DuckDB file are never committed. CI uses the small fixture only to verify that the pipeline still runs.
 
 ## Data
 
